@@ -123,12 +123,15 @@ function openAction() {
       fs.readFile(fp, (err, data) => {
         if (err) throw err;
         const parsed = JSON.parse(data);
-        console.log('parsed', parsed);
+
+        const res = {
+          "values": parsed
+        }
 
         if (RENDERER_READY) {
-          mainWindow.webContents.send("data", parsed);
+          mainWindow.webContents.send("data", res);
         } else {
-          dataQueue.push(parsed);
+          dataQueue.push(res);
         }
 
 
