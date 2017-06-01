@@ -1,8 +1,16 @@
 const electron = require('electron')
+const { dialog, ipcMain } = require('electron')
+
+const fs = require('fs');
+
+
+require('electron-debug')({showDevTools: true});
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+
+const Menu = electron.Menu;
 
 const path = require('path')
 const url = require('url')
@@ -13,7 +21,30 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 1024, height: 768})
+  const menuTemplate = [
+    {},
+    {
+      label: 'File',
+      role: 'window',
+      submenu: [
+        {
+          label: 'Open',
+          click: () => {
+              openAction();
+          }
+        },
+        {
+          label: 'Quit',
+          click: () => {
+            app.quit();
+          }
+        }
+      ]
+    }
+  ];
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -58,3 +89,50 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+
+const dataQueue = [];
+
+let RENDERER_READY = false;
+ipcMain.on('status', (event, arg) => {
+  console.log('renderer is', 'ready')
+  if (arg == 'ready') {
+    RENDERER_READY = true;
+    if (dataQueue.length > 0) {
+      console.log('sending pending data');
+      dataQueue.forEach((datum) => {
+        mainWindow.webContents.send("data", datum);
+      })
+    }
+  }
+})
+
+
+
+
+function openAction() {
+  const options = {
+    filters: [
+      {name: 'JSON Files', extensions: ['json']}
+    ]
+  };
+
+  dialog.showOpenDialog(mainWindow, {}, (filenames) => {
+    if(filenames.length > 0) {
+      const fp = filenames[0];
+      fs.readFile(fp, (err, data) => {
+        if (err) throw err;
+        const parsed = JSON.parse(data);
+        console.log('parsed', parsed);
+
+        if (RENDERER_READY) {
+          mainWindow.webContents.send("data", parsed);
+        } else {
+          dataQueue.push(parsed);
+        }
+
+
+      });
+    }
+  })
+}
