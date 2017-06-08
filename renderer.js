@@ -1,17 +1,22 @@
 const libVoyager = require('voyager');
 const { ipcRenderer } = require('electron')
 
+const config = {
+  showDataSourceSelector: false,
+}
+let data;
 
-const container = document.getElementById("voyager-embed");
-console.log("Hello from renderer", libVoyager, container)
-const voyagerInstance = libVoyager.CreateVoyager("#voyager-embed", undefined, undefined)
+const voyagerInstance = libVoyager.CreateVoyager("#voyager-embed", config, data)
 
-//send a message to the main thread that we are ready.
-ipcRenderer.send('status', 'ready')
+setTimeout(() => {
+  // Tell main thread we are ready.
+  ipcRenderer.send('status', 'ready')
+}, 50);
+
 
 ipcRenderer.on('data', (event, arg) => {
-  console.log('got new data', arg)
-  voyagerInstance.updateData(arg);
+  data = arg;
+  voyagerInstance.updateData(data);
 })
 
 

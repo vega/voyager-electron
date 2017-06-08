@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./node_modules/voyager/lib/style.css">
     <title>Voyager Electron</title>
+
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+
+      #voyager-embed {
+        width: inherit;
+        height: inherit;
+      }
+    </style>
   </head>
   <body>
     <div id="voyager-embed"></div>
   </body>
 
   <script>
-    // You can also require other files to run in this process
     require('./renderer.js')
   </script>
 </html>
