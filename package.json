@@ -13,11 +13,13 @@
   ],
   "license": "BSD-3-Clause",
   "dependencies": {
+    "d3-dsv": "^1.0.5",
     "electron": "~1.6.10",
     "electron-debug": "^1.1.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.3.0",
+    "jschardet": "^1.4.2",
     "voyager": "git://github.com/vega/voyager.git"
   }
 }

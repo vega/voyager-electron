@@ -23,7 +23,10 @@ const handlers = {
     const options = {
       properties: ['openFile'],
       filters: [
-        { name: 'JSON Files', extensions: ['json'] },
+        {
+          name: 'Data Files',
+          extensions: ['json', 'csv', 'tsv'],
+        },
       ],
     };
 
@@ -31,7 +34,6 @@ const handlers = {
       if (filenames && filenames.length > 0) {
         const fp = filenames[0];
         const data = loadData.load(fp);
-
         if (RENDERER_READY) {
           mainWindow.webContents.send('data', data);
         } else {

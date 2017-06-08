@@ -16,7 +16,10 @@ setTimeout(() => {
 
 ipcRenderer.on('data', (event, arg) => {
   data = arg;
-  voyagerInstance.updateData(data);
+  console.log('data received', data)
+  voyagerInstance.updateData({
+    values: data,
+  });
 });
 
 
