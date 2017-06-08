@@ -28,7 +28,6 @@ function loadCSV(fp) {
 
 function load(fp) {
   const ext = path.extname(fp);
-  console.log("EXT", ext)
   if (ext === '.json') {
     return loadJSON(fp);
   } else if (ext === '.tsv') {
