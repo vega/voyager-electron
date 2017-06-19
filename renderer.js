@@ -16,9 +16,28 @@ setTimeout(() => {
 
 ipcRenderer.on('data', (event, arg) => {
   data = arg;
-  console.log('data received', data)
   voyagerInstance.updateData({
     values: data,
   });
 });
 
+
+let snapshot;
+function setupButtonHandlers() {
+  const takeSnapshotButton = document.getElementById('take-snapshot');
+  const restoreSnapshotButton = document.getElementById('restore-snapshot');
+
+
+  takeSnapshotButton.addEventListener('click', () => {
+    snapshot = voyagerInstance.getApplicationState();
+    console.log('Snapshot taken', snapshot);
+  });
+
+  restoreSnapshotButton.addEventListener('click', () => {
+    console.log('Restore snapshot', snapshot);
+    voyagerInstance.setApplicationState(snapshot);
+  });
+}
+
+
+setupButtonHandlers();
