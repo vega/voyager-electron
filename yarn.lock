@@ -366,9 +366,9 @@ commander@2:
   dependencies:
     graceful-readlink ">= 1.0.0"
 
-compassql@0.12.1:
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/compassql/-/compassql-0.12.1.tgz#5ee47c59920c4217fee881400177f15656460894"
+compassql@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/compassql/-/compassql-0.13.0.tgz#4137d214b5662b9c5d7b692cd1578c252603b1d1"
   dependencies:
     datalib "~1.7.0"
     typescript-json-schema "^0.9.0"
@@ -717,6 +717,34 @@ datalib@~1.7.0:
     request "^2.67.0"
     sync-request "^2.1.0"
     topojson "^1.6.19"
+
+datavoyager@^2.0.0-alpha.3:
+  version "2.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/datavoyager/-/datavoyager-2.0.0-alpha.3.tgz#c02967a177f89a742ffd8dde4343bdee4ac8a22e"
+  dependencies:
+    compassql "^0.13.0"
+    font-awesome "^4.7.0"
+    font-awesome-sass-loader "^1.0.3"
+    isomorphic-fetch "^2.2.1"
+    normalize-scss "^6.0.0"
+    react "^15.4.2"
+    react-css-modules "^4.1.0"
+    react-dnd "^2.2.3"
+    react-dnd-html5-backend "^2.2.3"
+    react-dom "^15.4.2"
+    react-redux "^5.0.2"
+    react-split-pane "^0.1.58"
+    react-tether "^0.5.6"
+    redux "^3.6.0"
+    redux-logger "^3.0.6"
+    redux-thunk "^2.2.0"
+    redux-undo beta
+    reselect "^2.5.4"
+    tether "^1.4.0"
+    tslib "^1.5.0"
+    vega "3.0.0-beta.22"
+    vega-datasets "^1.8.0"
+    vega-lite "2.0.0-beta.3"
 
 debug@2.2.0:
   version "2.2.0"
@@ -3467,34 +3495,6 @@ verror@1.3.6:
 viewport-dimensions@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/viewport-dimensions/-/viewport-dimensions-0.2.0.tgz#de740747db5387fd1725f5175e91bac76afdf36c"
-
-"voyager@git://github.com/vega/voyager.git":
-  version "2.0.0-alpha.0"
-  resolved "git://github.com/vega/voyager.git#b5a860925adabf4e1afb373d816442cf63b02c7e"
-  dependencies:
-    compassql "0.12.1"
-    font-awesome "^4.7.0"
-    font-awesome-sass-loader "^1.0.3"
-    isomorphic-fetch "^2.2.1"
-    normalize-scss "^6.0.0"
-    react "^15.4.2"
-    react-css-modules "^4.1.0"
-    react-dnd "^2.2.3"
-    react-dnd-html5-backend "^2.2.3"
-    react-dom "^15.4.2"
-    react-redux "^5.0.2"
-    react-split-pane "^0.1.58"
-    react-tether "^0.5.6"
-    redux "^3.6.0"
-    redux-logger "^3.0.6"
-    redux-thunk "^2.2.0"
-    redux-undo beta
-    reselect "^2.5.4"
-    tether "^1.4.0"
-    tslib "^1.5.0"
-    vega "3.0.0-beta.22"
-    vega-datasets "^1.8.0"
-    vega-lite "2.0.0-beta.3"
 
 whatwg-fetch@>=0.10.0:
   version "2.0.3"

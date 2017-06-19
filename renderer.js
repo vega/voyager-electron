@@ -1,4 +1,4 @@
-const libVoyager = require('voyager');
+const libVoyager = require('datavoyager');
 const { ipcRenderer } = require('electron');
 
 const config = {
@@ -21,6 +21,4 @@ ipcRenderer.on('data', (event, arg) => {
     values: data,
   });
 });
-
-
 
