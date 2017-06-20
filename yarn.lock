@@ -718,9 +718,9 @@ datalib@~1.7.0:
     sync-request "^2.1.0"
     topojson "^1.6.19"
 
-datavoyager@^2.0.0-alpha.3:
-  version "2.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/datavoyager/-/datavoyager-2.0.0-alpha.3.tgz#c02967a177f89a742ffd8dde4343bdee4ac8a22e"
+datavoyager@^2.0.0-alpha.4:
+  version "2.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/datavoyager/-/datavoyager-2.0.0-alpha.4.tgz#1b7f1cc2f503cb6bf7543a2f9bc9d03baa97518d"
   dependencies:
     compassql "^0.13.0"
     font-awesome "^4.7.0"

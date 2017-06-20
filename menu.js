@@ -65,6 +65,14 @@ function createMenuTree(app, handlers) {
           label: 'Open',
           click: handlers.handleOpen,
         },
+        {
+          label: 'Take Snapshot',
+          click: handlers.handleTakeSnapshot,
+        },
+        {
+          label: 'Restore Snapshot',
+          click: handlers.handleRestoreSnapshot,
+        },
       ],
     },
     {

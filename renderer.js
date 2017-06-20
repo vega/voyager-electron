@@ -14,6 +14,7 @@ setTimeout(() => {
 }, 50);
 
 
+// Handle data updates
 ipcRenderer.on('data', (event, arg) => {
   data = arg;
   voyagerInstance.updateData({
@@ -22,22 +23,21 @@ ipcRenderer.on('data', (event, arg) => {
 });
 
 
-let snapshot;
-function setupButtonHandlers() {
-  const takeSnapshotButton = document.getElementById('take-snapshot');
-  const restoreSnapshotButton = document.getElementById('restore-snapshot');
+// Handle application state updates and requests
+ipcRenderer.on('applicationState', (event, arg) => {
+  const { msg, payload } = arg;
 
-
-  takeSnapshotButton.addEventListener('click', () => {
-    snapshot = voyagerInstance.getApplicationState();
-    console.log('Snapshot taken', snapshot);
-  });
-
-  restoreSnapshotButton.addEventListener('click', () => {
-    console.log('Restore snapshot', snapshot);
-    voyagerInstance.setApplicationState(snapshot);
-  });
-}
-
-
-setupButtonHandlers();
+  switch (msg) {
+    case 'getState':
+      ipcRenderer.send('applicationState', {
+        msg: 'getState',
+        payload: voyagerInstance.getApplicationState(),
+      });
+      break;
+    case 'setState':
+      voyagerInstance.setApplicationState(payload);
+      break;
+    default:
+      break;
+  }
+});
