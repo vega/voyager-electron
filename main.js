@@ -44,19 +44,19 @@ const handlers = {
     });
   },
 
-  handleTakeSnapshot: () => {
+  handleTakeSession: () => {
     mainWindow.webContents.send('applicationState', {
       msg: 'getState',
     });
   },
 
-  handleRestoreSnapshot: () => {
+  handleRestoreSession: () => {
     const options = {
       properties: ['openFile'],
       filters: [
         {
-          name: 'Snapshot Files',
-          extensions: ['vyjson'],
+          name: 'Session Files',
+          extensions: ['json'],
         },
       ],
     };
@@ -143,7 +143,7 @@ ipcMain.on('applicationState', (event, arg) => {
   switch (msg) {
     case 'getState':
       dialog.showSaveDialog(mainWindow, {
-        defaultPath: 'snapshot.vyjson',
+        defaultPath: 'snapshot.vy.json',
       },
       (filePath) => {
         if (filePath) {

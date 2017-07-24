@@ -66,12 +66,12 @@ function createMenuTree(app, handlers) {
           click: handlers.handleOpen,
         },
         {
-          label: 'Take Snapshot',
-          click: handlers.handleTakeSnapshot,
+          label: 'Save Session',
+          click: handlers.handleTakeSession,
         },
         {
-          label: 'Restore Snapshot',
-          click: handlers.handleRestoreSnapshot,
+          label: 'Load Session',
+          click: handlers.handleRestoreSession,
         },
       ],
     },
