@@ -65,6 +65,14 @@ function createMenuTree(app, handlers) {
           label: 'Open',
           click: handlers.handleOpen,
         },
+        {
+          label: 'Save Session',
+          click: handlers.handleTakeSession,
+        },
+        {
+          label: 'Load Session',
+          click: handlers.handleRestoreSession,
+        },
       ],
     },
     {

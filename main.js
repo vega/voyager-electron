@@ -2,6 +2,7 @@ const electron = require('electron');
 const { dialog, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
+const fs = require('fs');
 const createMenuTree = require('./menu');
 const loadData = require('./loadData');
 require('electron-debug');
@@ -38,6 +39,37 @@ const handlers = {
           mainWindow.webContents.send('data', data);
         } else {
           dataQueue.push(data);
+        }
+      }
+    });
+  },
+
+  handleTakeSession: () => {
+    mainWindow.webContents.send('applicationState', {
+      msg: 'getState',
+    });
+  },
+
+  handleRestoreSession: () => {
+    const options = {
+      properties: ['openFile'],
+      filters: [
+        {
+          name: 'Session Files',
+          extensions: ['json'],
+        },
+      ],
+    };
+
+    dialog.showOpenDialog(mainWindow, options, (filenames) => {
+      if (filenames && filenames.length > 0) {
+        const fp = filenames[0];
+        const data = loadData.loadJSON(fp);
+        if (RENDERER_READY) {
+          mainWindow.webContents.send('applicationState', {
+            msg: 'setState',
+            payload: data,
+          });
         }
       }
     });
@@ -102,5 +134,24 @@ ipcMain.on('status', (event, arg) => {
       });
       dataQueue = [];
     }
+  }
+});
+
+ipcMain.on('applicationState', (event, arg) => {
+  const { msg, payload } = arg;
+
+  switch (msg) {
+    case 'getState':
+      dialog.showSaveDialog(mainWindow, {
+        defaultPath: 'snapshot.vy.json',
+      },
+      (filePath) => {
+        if (filePath) {
+          fs.writeFileSync(filePath, JSON.stringify(payload, null, '\t'));
+        }
+      });
+      break;
+    default:
+      break;
   }
 });

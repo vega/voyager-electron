@@ -40,4 +40,6 @@ function load(fp) {
 
 module.exports = {
   load,
+  loadJSON,
+  loadCSV,
 };
