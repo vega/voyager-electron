@@ -44,6 +44,26 @@ const handlers = {
     });
   },
 
+  handleLoadSpec: () => {
+    const options = {
+      properties: ['openFile'],
+      filters: [
+        {
+          name: 'Vega Lite Specs',
+          extensions: ['json'],
+        },
+      ],
+    };
+
+    dialog.showOpenDialog(mainWindow, options, (filenames) => {
+      if (filenames && filenames.length > 0) {
+        const fp = filenames[0];
+        const spec = loadData.loadJSON(fp);
+        mainWindow.webContents.send('spec', spec);
+      }
+    });
+  },
+
   handleTakeSession: () => {
     mainWindow.webContents.send('applicationState', {
       msg: 'getState',

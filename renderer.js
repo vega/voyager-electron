@@ -22,6 +22,11 @@ ipcRenderer.on('data', (event, arg) => {
   });
 });
 
+// Handle spec updates
+ipcRenderer.on('spec', (event, spec) => {
+  voyagerInstance.setSpec(spec);
+});
+
 
 // Handle application state updates and requests
 ipcRenderer.on('applicationState', (event, arg) => {

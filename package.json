@@ -28,9 +28,9 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "d3-dsv": "^1.0.5",
+    "datavoyager": "^2.0.0-alpha.8",
     "electron-debug": "^1.1.0",
-    "jschardet": "^1.4.2",
-    "datavoyager": "2.0.0-alpha.7"
+    "jschardet": "^1.4.2"
   },
   "devDependencies": {
     "electron": "~1.6.10",

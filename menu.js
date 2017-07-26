@@ -73,6 +73,10 @@ function createMenuTree(app, handlers) {
           label: 'Load Session',
           click: handlers.handleRestoreSession,
         },
+        {
+          label: 'Load Vega Lite Spec',
+          click: handlers.handleLoadSpec,
+        },
       ],
     },
     {
