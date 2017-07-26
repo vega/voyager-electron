@@ -4,7 +4,21 @@
   "description": "A minimal Electron application that embeds voyager",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist-all": "electron-builder -mwl"
+  },
+  "build": {
+    "appId": "vega.github.io/voyager2",
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "tar.gz"
+    },
+    "win": {
+      "target": "zip"
+    }
   },
   "repository": "",
   "keywords": [],
@@ -14,12 +28,15 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "d3-dsv": "^1.0.5",
-    "datavoyager": "^2.0.0-alpha.5",
-    "electron": "~1.6.10",
     "electron-debug": "^1.1.0",
+    "jschardet": "^1.4.2",
+    "datavoyager": "2.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "electron": "~1.6.10",
+    "electron-builder": "^19.16.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.3.0",
-    "jschardet": "^1.4.2"
+    "eslint-plugin-import": "^2.3.0"
   }
 }
