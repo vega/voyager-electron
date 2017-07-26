@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "start:server": "electron . --server",
     "dist": "electron-builder",
     "dist-all": "electron-builder -mwl"
   },
@@ -29,6 +30,7 @@
   "dependencies": {
     "d3-dsv": "^1.0.5",
     "datavoyager": "^2.0.0-alpha.8",
+    "datavoyager-server": "git://github.com/vega/voyager-server.git",
     "electron-debug": "^1.1.0",
     "jschardet": "^1.4.2"
   },
