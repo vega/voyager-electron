@@ -7,6 +7,12 @@ const createMenuTree = require('./menu');
 const loadData = require('./loadData');
 require('electron-debug');
 
+// Starts server with default options
+if (process.argv.includes('--server')) {
+  require('datavoyager-server/build/server'); // eslint-disable-line global-require
+}
+
+
 const app = electron.app;
 const Menu = electron.Menu;
 let mainWindow;

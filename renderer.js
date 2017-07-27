@@ -1,8 +1,14 @@
 const libVoyager = require('datavoyager');
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, remote } = require('electron');
+
+let serverUrl = null;
+if (remote.process.argv.includes('--server')) {
+  serverUrl = 'http://localhost:3000';
+}
 
 const config = {
   showDataSourceSelector: false,
+  serverUrl,
 };
 let data;
 
