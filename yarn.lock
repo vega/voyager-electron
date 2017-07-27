@@ -940,7 +940,7 @@ datalib@~1.7.0:
 
 "datavoyager-server@git://github.com/vega/voyager-server.git":
   version "0.0.4"
-  resolved "git://github.com/vega/voyager-server.git#b3c6cdab15cfc23fface9cf823c75bd1f0b1ced9"
+  resolved "git://github.com/vega/voyager-server.git#101f529b1550b36269ffdfb60d3f35609d428f0b"
   dependencies:
     app-root-path "^2.0.1"
     body-parser "^1.17.1"
