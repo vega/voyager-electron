@@ -62,7 +62,7 @@ function createMenuTree(app, handlers) {
       role: 'window',
       submenu: [
         {
-          label: 'Load CSV or JSON data',
+          label: 'Load CSV, TSV, or JSON data',
           click: handlers.handleOpen,
         },
         {
