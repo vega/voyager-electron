@@ -40,10 +40,12 @@ const handlers = {
     dialog.showOpenDialog(mainWindow, options, (filenames) => {
       if (filenames && filenames.length > 0) {
         const fp = filenames[0];
+        // TODO Send 'loading' signal/message to renderer thread.
         const data = loadData.load(fp);
         if (RENDERER_READY) {
           mainWindow.webContents.send('data', data);
         } else {
+          // This may be overkill.
           dataQueue.push(data);
         }
       }
@@ -64,7 +66,11 @@ const handlers = {
     dialog.showOpenDialog(mainWindow, options, (filenames) => {
       if (filenames && filenames.length > 0) {
         const fp = filenames[0];
+        // TODO Send 'loading' signal/message to renderer thread.
         const spec = loadData.loadJSON(fp);
+
+        // Here is where you can manipulate the spec and resolve any relative path issues.
+
         mainWindow.webContents.send('spec', spec);
       }
     });
