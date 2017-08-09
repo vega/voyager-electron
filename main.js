@@ -43,7 +43,12 @@ const handlers = {
         // TODO Send 'loading' signal/message to renderer thread.
         const data = loadData.load(fp);
         if (RENDERER_READY) {
-          mainWindow.webContents.send('data', data);
+          mainWindow.webContents.send('data', {
+            data: {
+              values: data
+            }, 
+            filename: fp.replace(/^.*[\\\/]/, '')
+          });
         } else {
           // This may be overkill.
           dataQueue.push(data);
