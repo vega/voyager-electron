@@ -43,7 +43,12 @@ const handlers = {
         // TODO Send 'loading' signal/message to renderer thread.
         const data = loadData.load(fp);
         if (RENDERER_READY) {
-          mainWindow.webContents.send('data', data);
+          mainWindow.webContents.send('data', {
+            data: {
+              values: data
+            }, 
+            filename: fp.replace(/^.*[\\\/]/, '')
+          });
         } else {
           // This may be overkill.
           dataQueue.push(data);
@@ -67,11 +72,12 @@ const handlers = {
       if (filenames && filenames.length > 0) {
         const fp = filenames[0];
         // TODO Send 'loading' signal/message to renderer thread.
-        const spec = loadData.loadJSON(fp);
 
         // Here is where you can manipulate the spec and resolve any relative path issues.
-
-        mainWindow.webContents.send('spec', spec);
+        mainWindow.webContents.send('spec', {
+          spec: loadData.loadJSON(fp),
+          filename: fp.replace(/^.*[\\\/]/, '')
+        });
       }
     });
   },
