@@ -40,10 +40,13 @@ const handlers = {
     dialog.showOpenDialog(mainWindow, options, (filenames) => {
       if (filenames && filenames.length > 0) {
         const fp = filenames[0];
+
+        const filename = fp.replace(/^.*[\\\/]/, '');
+
         // TODO Send 'loading' signal/message to renderer thread.
         const data = loadData.load(fp);
         if (RENDERER_READY) {
-          mainWindow.webContents.send('data', data);
+          mainWindow.webContents.send('data', data, filename);
         } else {
           // This may be overkill.
           dataQueue.push(data);
@@ -70,8 +73,9 @@ const handlers = {
         const spec = loadData.loadJSON(fp);
 
         // Here is where you can manipulate the spec and resolve any relative path issues.
+        const filename = fp.replace(/^.*[\\\/]/, '');
 
-        mainWindow.webContents.send('spec', spec);
+        mainWindow.webContents.send('spec', spec, filename);
       }
     });
   },
