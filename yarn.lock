@@ -4219,9 +4219,9 @@ vega-datasets@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/vega-datasets/-/vega-datasets-1.8.0.tgz#a614ca655164e4f1a5e4477864d1091350d4eac8"
 
-"vega-datasets@github:vega/vega-datasets#gh-pages":
-  version "1.8.0"
-  resolved "https://codeload.github.com/vega/vega-datasets/tar.gz/26bddc53d6112cff239436cdc85f56249c39e9e0"
+vega-datasets@vega/vega-datasets#gh-pages:
+  version "1.10.0"
+  resolved "https://codeload.github.com/vega/vega-datasets/tar.gz/7080ba8297825d27495bdfb8386d10cff83cbacf"
 
 vega-encode@1:
   version "1.0.1"
