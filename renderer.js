@@ -10,9 +10,8 @@ const config = {
   showDataSourceSelector: false,
   serverUrl,
 };
-let data;
 
-const voyagerInstance = libVoyager.CreateVoyager('#voyager-embed', config, data);
+const voyagerInstance = libVoyager.CreateVoyager('#voyager-embed', config, undefined);
 
 setTimeout(() => {
   // Tell main thread we are ready.
@@ -21,15 +20,16 @@ setTimeout(() => {
 
 
 // Handle data updates
-ipcRenderer.on('data', (event, arg) => {
-  data = arg;
+ipcRenderer.on('data', (event, data, filename) => {
+  voyagerInstance.setFilename(filename);
   voyagerInstance.updateData({
     values: data,
   });
 });
 
 // Handle spec updates
-ipcRenderer.on('spec', (event, spec) => {
+ipcRenderer.on('spec', (event, spec, filename) => {
+  voyagerInstance.setFilename(filename);
   voyagerInstance.setSpec(spec);
 });
 
