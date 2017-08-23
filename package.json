@@ -29,7 +29,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "d3-dsv": "^1.0.5",
-    "datavoyager": "^2.0.0-alpha.9",
+    "datavoyager": "^2.0.0-alpha.11",
     "datavoyager-server": "git://github.com/vega/voyager-server.git",
     "electron-debug": "^1.1.0",
     "jschardet": "^1.4.2"
