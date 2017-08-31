@@ -4,6 +4,7 @@
   "description": "A minimal Electron application that embeds voyager",
   "main": "main.js",
   "scripts": {
+    "build": "webpack --config=webpack.config.js",
     "start": "electron .",
     "start:server": "electron . --server",
     "dist": "electron-builder",

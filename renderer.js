@@ -1,5 +1,5 @@
 require('font-awesome-sass-loader');
-const libVoyager = require('./node_modules/datavoyager/build/lib-electron-voyager');
+const libVoyager = require('datavoyager');
 const { ipcRenderer, remote } = require('electron');
 
 let serverUrl = null;
