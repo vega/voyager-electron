@@ -12,7 +12,10 @@ const config = {
   serverUrl,
 };
 
-const voyagerInstance = libVoyager.CreateVoyager('#voyager-embed', config, undefined);
+const voyagerInstance = libVoyager.createVoyager('#voyager-embed', {
+  config,
+  data: undefined,
+});
 
 setTimeout(() => {
   // Tell main thread we are ready.
