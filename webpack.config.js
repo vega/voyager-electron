@@ -28,9 +28,17 @@ module.exports = {
         ],
       },
       {
+        test: /\.node$/,
+        use: 'node-loader',
+      },
+      {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: 'url-loader',
       },
     ],
   },
+  resolve: {
+    extensions: ['.node', '.ts', '.tsx', '.js', '.scss', '.css'],
+  },
+  devtool: 'source-map',
 };
