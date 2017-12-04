@@ -30,8 +30,8 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "d3-dsv": "^1.0.5",
-    "datavoyager": "^2.0.0-alpha.12",
-    "datavoyager-server": "git://github.com/vega/voyager-server.git",
+    "datavoyager": "../voyager",
+    "datavoyager-server": "../voyager-server",
     "electron-debug": "^1.1.0",
     "font-awesome": "4.6.3",
     "font-awesome-sass-loader": "1.0.3",
